@@ -1,0 +1,32 @@
+name: Deploy BookStore-Frontend
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}     
+      - name: Build Docker Image
+        run: docker build -t robbiec2000/estate_frontend .
+
+
+      - name: Publish Image to docker hub
+        run: docker push robbiec2000/estate_frontend:latest
+ 
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull robbiec2000/estate_frontend:latest
+      - name: Delete old container
+        run: docker rm -f estate-frontend-container
+      - name: Run Docker Container
+        run: docker run -d -p 5173:80 --name estate-frontend-container robbiec2000/estate_frontend
