@@ -63,13 +63,13 @@ function ProfileUpdatePage() {
       <div className="sideContainer">
         <img src={avatar[0] || currentUser.avatar || "/noavatar.jpg"} alt="" className="avatar" />
         <UploadWidget uwConfig={{
-          cloudName: "lamadev",
-          uploadPreset: "estate",
+          cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
+          uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
           multiple: false,
           maxImageFileSize: 2000000,
           folder: "avatars",
         }}
-        setState={setAvatar} />
+          setState={setAvatar} />
       </div>
     </div>
   );

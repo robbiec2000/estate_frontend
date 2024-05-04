@@ -51,7 +51,11 @@ function UploadWidget({uwConfig, setState}) {
         // ever occurrence
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
-          setState((prev) => [...prev, result.info.secure_url]);
+          if(uwConfig.multiple){
+            setState((prev) => [...prev, result.info.secure_url]);
+          }else{
+            setState([result.info.secure_url]);
+          }
         }
       }
     );
@@ -75,8 +79,9 @@ function UploadWidget({uwConfig, setState}) {
       id="upload_widget"
       className="cloudinary-button"
       onClick={open}
+      style={{backgroundColor: "#fece51", border: "none", color:"black"}}
     >
-      Upload
+      Choose File
     </button>
   );
 }

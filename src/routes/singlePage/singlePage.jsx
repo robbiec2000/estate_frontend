@@ -2,7 +2,7 @@ import "./singlePage.scss";
 import Slider from "../../components/slider/Slider";
 import Map from "../../components/map/Map";
 import DOMPurify from "dompurify"
-import { redirect, useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
@@ -12,10 +12,11 @@ function SinglePage() {
   const post = useLoaderData();
   const [saved, setSaved] = useState(post.isSaved);
   const { currentUser } = useContext(AuthContext);
+  const  navigate  = useNavigate();
 
   const handleSave = async () => {
-    if(!currentUser){
-      redirect("/login");
+    if (!currentUser) {
+      navigate("/login");
     }
     setSaved((prev) => !prev);
     try {
@@ -23,22 +24,26 @@ function SinglePage() {
         postId: post.id
       });
 
-    }catch(e){
+    } catch (e) {
       console.log(e);
       setSaved((prev) => !prev);
     }
   }
 
   const handleAddChat = async () => {
-    if(!currentUser){
-      redirect("/login");
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+    if(currentUser.id === post.user.id){
+      return;
     }
     try {
       await apiRequest.post("/chats", {
         receiverId: post.user.id,
-    });
+      });
 
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
@@ -56,14 +61,14 @@ function SinglePage() {
                   <img src="/pin.png" alt="" />
                   <span>{post.address}</span>
                 </div>
-                <div className="price">$ {post.price}</div>
+                <div className="price">$ {post.price} {post.type==="rent" && "per week"}</div>
               </div>
               <div className="user">
                 <img src={post.user.avatar} alt="" />
                 <span>{post.user.username}</span>
               </div>
             </div>
-            <div className="bottom" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.postDetail.desc)}}/>
+            <div className="bottom" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.postDetail.desc) }} />
           </div>
         </div>
       </div>
@@ -143,11 +148,12 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button onClick={handleAddChat} disabled={currentUser.id === post.user.id}>
-              <img src="/chat.png" alt="" />
-              Send a Message
-            </button>
-            <button onClick={handleSave} style={{backgroundColor: saved?"#fece51":"white"}} >
+              <button onClick={handleAddChat}>
+                <img src="/chat.png" alt="" />
+                Send a Message
+              </button>
+
+            <button onClick={handleSave} style={{ backgroundColor: saved ? "#fece51" : "white" }} >
               <img src="/save.png" alt="" />
               {saved ? "Place Saved" : "Save the Place"}
             </button>

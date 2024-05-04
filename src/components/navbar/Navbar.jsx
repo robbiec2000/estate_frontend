@@ -3,6 +3,7 @@ import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useNotificationStore } from "../../lib/notificationStore";
+import { GoHome } from "react-icons/go";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -21,13 +22,13 @@ function Navbar() {
     <nav>
       <div className="left">
         <a href="/" className="logo">
-          <img src="/logo.png" alt="" />
-          <span>LamaEstate</span>
+          <GoHome style={{fontSize: 35, color:"white", backgroundColor:"#e4002b", borderRadius: 30, padding: 5}}/>
+          <span>EstateEase</span>
         </a>
         <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-        <a href="/">Agents</a>
+        <a href="/list">Property</a>
+        <a href="/list?type=rent">Rent</a>
+        <a href="/list?type=buy">Buy</a>
       </div>
       <div className="right">
         {currentUser ? (
@@ -59,11 +60,11 @@ function Navbar() {
         </div>
         <div className={open ? "menu active" : "menu"}>
           <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-          <a href="/">Agents</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+          <a href="/list">Property</a>
+          <a href="/list?type=buy">Buy</a>
+          <a href="/list?type=rent">Rent</a>
+          <a href="/login">Sign in</a>
+          <a href="/register">Sign up</a>
         </div>
       </div>
     </nav>

@@ -1,6 +1,13 @@
+@import "../../responsive.scss";
+
 .profileUpdatePage {
   height: 100%;
   display: flex;
+
+  @include sm {
+    display: block;
+    overflow-y: scroll;
+  }
 
   .formContainer {
     flex:3;
@@ -11,6 +18,8 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 100%;
+      max-width: 300px;
 
       .item {
         display: flex;
@@ -30,7 +39,7 @@
         padding: 20px;
         border-radius: 5px;
         border: none;
-        background-color: teal;
+        background-color: #e4002b;
         color: white;
         font-weight: bold;
         cursor: pointer;
@@ -46,6 +55,11 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+
+    @include sm {
+      margin-top: 50px;
+      padding: 10px 0;
+    }
 
     .avatar{
       width: 50%;

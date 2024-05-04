@@ -23,11 +23,14 @@ function Filter() {
   const handleFilter = () => {
     setSearchParams(query);
   }
-  
+
   return (
     <div className="filter">
       <h1>
-        Search results for <b>{searchParams.get("city")}</b>
+        {searchParams.get("city") ?
+          <>Search results for <b>{searchParams.get("city")}</b></> :
+          <>All properties</>
+        }
       </h1>
       <div className="top">
         <div className="item">
@@ -45,13 +48,13 @@ function Filter() {
       <div className="bottom">
         <div className="item">
           <label htmlFor="type">Type</label>
-          <select name="type" id="type"  onChange={handleChange} defaultValue={query.type}>
+          <select name="type" id="type" onChange={handleChange} defaultValue={query.type}>
             <option value="">any</option>
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
           </select>
         </div>
-        <div className="item"  onChange={handleChange} defaultValue={query.property}>
+        <div className="item" onChange={handleChange} defaultValue={query.property}>
           <label htmlFor="property">Property</label>
           <select name="property" id="property">
             <option value="">any</option>

@@ -150,17 +150,18 @@ function NewPostPage() {
               <label htmlFor="restaurant">Restaurant</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
-            <button className="sendButton">Add</button>
+            <div className="item"> <button className="sendButton">Add</button></div>
+
           </form>
         </div>
       </div>
       <div className="sideContainer">
         {images.map((img, index) => (
-          <img src={img} key={index} alt=""/>
+          <img src={img} key={index} alt="" />
         ))}
         <UploadWidget uwConfig={{
-          cloudName: "lamadev",
-          uploadPreset: "estate",
+          cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
+          uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
           multiple: true,
           folder: "posts",
         }}

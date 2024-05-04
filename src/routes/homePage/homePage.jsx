@@ -10,10 +10,10 @@ function HomePage() {
         <div className="wrapper">
           <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-            explicabo suscipit cum eius, iure est nulla animi consequatur
-            facilis id pariatur fugit quos laudantium temporibus dolor ea
-            repellat provident impedit!
+          Are you tired of endless scrolling through outdated listings, 
+          feeling lost in the maze of real estate jargon? Say goodbye 
+          to confusion and frustration because EstateApp is here to revolutionize 
+          your home buying experience!
           </p>
           <SearchBar />
           <div className="boxes">

@@ -10,7 +10,7 @@ export const SocketContextProvider = ({ children }) => {
     const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
-        setSocket(io("http://52.62.36.163:8800"));
+        setSocket(io(import.meta.env.VITE_SERVER_URL));
     }, []);
 
     useEffect(() => {
