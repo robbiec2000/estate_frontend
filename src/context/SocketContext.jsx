@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client"
 import { AuthContext } from "./AuthContext";
+import { SERVER_URL } from "../lib/apiRequest";
 
 export const SocketContext = createContext();
 
@@ -10,7 +11,7 @@ export const SocketContextProvider = ({ children }) => {
     const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
-        setSocket(io(import.meta.env.VITE_SERVER_URL));
+        setSocket(io(SERVER_URL));
     }, []);
 
     useEffect(() => {

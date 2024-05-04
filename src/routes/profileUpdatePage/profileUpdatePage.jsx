@@ -63,8 +63,8 @@ function ProfileUpdatePage() {
       <div className="sideContainer">
         <img src={avatar[0] || currentUser.avatar || "/noavatar.jpg"} alt="" className="avatar" />
         <UploadWidget uwConfig={{
-          cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
-          uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
+          cloudName: "ditcibnyi",
+          uploadPreset: "estate",
           multiple: false,
           maxImageFileSize: 2000000,
           folder: "avatars",

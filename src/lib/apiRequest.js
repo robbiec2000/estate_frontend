@@ -1,7 +1,11 @@
 import axios from "axios";
 
+const isLocal = false;
+export const SERVER_URL = isLocal?"http://localhost:8800":"http://52.62.36.163:8800";
+
+//import.meta.env.VITE_SERVER_URL
 const apiRequest = axios.create({
-    baseURL:import.meta.env.VITE_SERVER_URL + "/api",
+    baseURL:SERVER_URL + "/api",
     withCredentials: true,
 });
 

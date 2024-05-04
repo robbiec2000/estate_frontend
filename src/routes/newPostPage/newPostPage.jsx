@@ -160,8 +160,8 @@ function NewPostPage() {
           <img src={img} key={index} alt="" />
         ))}
         <UploadWidget uwConfig={{
-          cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
-          uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
+          cloudName: "ditcibnyi",
+          uploadPreset: "estate",
           multiple: true,
           folder: "posts",
         }}
