@@ -53,7 +53,7 @@ function NewPostPage() {
   return (
     <div className="newPostPage">
       <div className="formContainer">
-        <h1>Add New Post</h1>
+        <h1>Add New Property</h1>
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <div className="item">

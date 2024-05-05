@@ -96,7 +96,6 @@ function Chat({ chats }) {
             </div>
           ))
         }
-
       </div>
       {chat && (
         <div className="chatBox">
