@@ -5,6 +5,7 @@ import ReactQuill from "react-quill"
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../../components/uploadWidget/uploadWidget";
+import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 
 function NewPostPage() {
 
@@ -57,98 +58,259 @@ function NewPostPage() {
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <div className="item">
-              <label htmlFor="title">Title</label>
-              <input id="title" name="title" type="text" />
+              {/* <label htmlFor="title">Title</label>
+              <input id="title" name="title" type="text" /> */}
+              <TextField
+                label="Title"
+                type="text"
+                name="title"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item">
-              <label htmlFor="price">Price</label>
-              <input id="price" name="price" type="number" />
+              {/* <label htmlFor="price">Price</label>
+              <input id="price" name="price" type="number" /> */}
+              <TextField
+                label="Price"
+                type="number"
+                name="price"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item">
-              <label htmlFor="address">Address</label>
-              <input id="address" name="address" type="text" />
+              {/* <label htmlFor="address">Address</label>
+              <input id="address" name="address" type="text" /> */}
+              <TextField
+                label="Address"
+                type="text"
+                name="address"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item description">
               <label htmlFor="desc">Description</label>
               <ReactQuill theme="snow" onChange={setValue} value={value} />
             </div>
             <div className="item">
-              <label htmlFor="city">City</label>
-              <input id="city" name="city" type="text" />
+              {/* <label htmlFor="city">City</label>
+              <input id="city" name="city" type="text" /> */}
+              <FormControl fullWidth size="small">
+                <InputLabel id="select-label-city">Suburb</InputLabel>
+                <Select
+                  labelId="select-label-city"
+                  label="Suburb"
+                  name="city"
+                  size="small"
+                  style={{ width: "100%" }}
+                >
+                  <MenuItem value={"cbd"}>Melbourne CBD</MenuItem>
+                  <MenuItem value={"carlton"}>Carlton</MenuItem>
+                  <MenuItem value={"boxhill"}>Boxhill</MenuItem>
+                  <MenuItem value={"doncaster"}>Doncaster</MenuItem>
+                  <MenuItem value={"southbank"}>Southbank</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="item">
-              <label htmlFor="bedroom">Bedroom Number</label>
-              <input min={1} id="bedroom" name="bedroom" type="number" />
+              {/* <label htmlFor="bedroom">Bedroom Number</label>
+              <input min={1} id="bedroom" name="bedroom" type="number" /> */}
+              <TextField
+                label="Bedroom Number"
+                type="number"
+                name="bedroom"
+                size="small"
+                style={{ width: "100%" }}
+                defaultValue={1}
+              />
             </div>
             <div className="item">
-              <label htmlFor="bathroom">Bathroom Number</label>
-              <input min={1} id="bathroom" name="bathroom" type="number" />
+              {/* <label htmlFor="bathroom">Bathroom Number</label>
+              <input min={1} id="bathroom" name="bathroom" type="number" /> */}
+              <TextField
+                label="Bathroom Number"
+                type="number"
+                name="bathroom"
+                size="small"
+                style={{ width: "100%" }}
+                defaultValue={1}
+              />
             </div>
             <div className="item">
-              <label htmlFor="latitude">Latitude</label>
-              <input id="latitude" name="latitude" type="text" />
+              {/* <label htmlFor="latitude">Latitude</label>
+              <input id="latitude" name="latitude" type="text" /> */}
+              <TextField
+                label="Latitude"
+                type="number"
+                name="latitude"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item">
-              <label htmlFor="longitude">Longitude</label>
-              <input id="longitude" name="longitude" type="text" />
+              {/* <label htmlFor="longitude">Longitude</label>
+              <input id="longitude" name="longitude" type="text" /> */}
+              <TextField
+                label="Longitude"
+                type="number"
+                name="longitude"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item">
-              <label htmlFor="type">Type</label>
+              {/* <label htmlFor="type">Type</label>
               <select name="type">
                 <option value="rent" defaultChecked>
                   Rent
                 </option>
                 <option value="buy">Buy</option>
-              </select>
+              </select> */}
+              <FormControl fullWidth size="small">
+                <InputLabel id="select-label-type">Type</InputLabel>
+                <Select
+                  labelId="select-label-type"
+                  label="Type"
+                  name="type"
+                  size="small"
+                  style={{ width: "100%" }}
+                  defaultValue={"buy"}
+                >
+                  <MenuItem value={"buy"}>Buy</MenuItem>
+                  <MenuItem value={"rent"}>Rent</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="item">
-              <label htmlFor="type">Property</label>
+              {/* <label htmlFor="type">Property</label>
               <select name="property">
                 <option value="apartment">Apartment</option>
                 <option value="house">House</option>
                 <option value="condo">Condo</option>
                 <option value="land">Land</option>
-              </select>
+              </select> */}
+              <FormControl fullWidth size="small">
+                <InputLabel id="select-label-property">Property</InputLabel>
+                <Select
+                  labelId="select-label-property"
+                  label="Property"
+                  name="property"
+                  size="small"
+                  style={{ width: "100%" }}
+                >
+                  <MenuItem value={"apartment"}>Apartment</MenuItem>
+                  <MenuItem value={"house"}>House</MenuItem>
+                  <MenuItem value={"condo"}>Condo</MenuItem>
+                  <MenuItem value={"land"}>Land</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="item">
-              <label htmlFor="utilities">Utilities Policy</label>
+              {/* <label htmlFor="utilities">Utilities Policy</label>
               <select name="utilities">
                 <option value="owner">Owner is responsible</option>
                 <option value="tenant">Tenant is responsible</option>
                 <option value="shared">Shared</option>
-              </select>
+              </select> */}
+              <FormControl fullWidth size="small">
+                <InputLabel id="select-label-utilities">Utilities Policy</InputLabel>
+                <Select
+                  labelId="select-label-utilities"
+                  label="Utilities Policy"
+                  name="utilities"
+                  size="small"
+                  style={{ width: "100%" }}
+                >
+                  <MenuItem value={"owner"}>Owner is responsible</MenuItem>
+                  <MenuItem value={"tenant"}>Tenant is responsible</MenuItem>
+                  <MenuItem value={"shared"}>Shared</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="item">
-              <label htmlFor="pet">Pet Policy</label>
-              <select name="pet">
+              {/* <label htmlFor="pet">Pet Policy</label> */}
+              {/* <select name="pet">
                 <option value="allowed">Allowed</option>
                 <option value="not-allowed">Not Allowed</option>
-              </select>
+              </select> */}
+                <FormControl fullWidth size="small">
+                <InputLabel id="select-label-pet">Pet Policy</InputLabel>
+                <Select
+                  labelId="select-label-pet"
+                  label="Pet Policy"
+                  name="pet"
+                  size="small"
+                  style={{ width: "100%" }}
+                >
+                  <MenuItem value={"allowed"}>Allowed</MenuItem>
+                  <MenuItem value={"not-allowed"}>Not Allowed</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="item">
-              <label htmlFor="income">Income Policy</label>
+              {/* <label htmlFor="income">Income Policy</label>
               <input
                 id="income"
                 name="income"
                 type="text"
                 placeholder="Income Policy"
+              /> */}
+                <TextField
+                label="Income Policy"
+                type="text"
+                name="income"
+                size="small"
+                style={{ width: "100%" }}
+              />
+            
+            </div>
+            <div className="item">
+              {/* <label htmlFor="size">Total Size (sqft)</label>
+              <input min={0} id="size" name="size" type="number" /> */}
+              <TextField
+                label="Total Size (sqm)"
+                type="number"
+                name="size"
+                size="small"
+                style={{ width: "100%" }}
+                min={0}
+              />
+
+            </div>
+            <div className="item">
+              {/* <label htmlFor="school">School</label>
+              <input min={0} id="school" name="school" type="number" /> */}
+              <TextField
+                label="School"
+                type="number"
+                name="school"
+                size="small"
+                style={{ width: "100%" }}
               />
             </div>
             <div className="item">
-              <label htmlFor="size">Total Size (sqft)</label>
-              <input min={0} id="size" name="size" type="number" />
+              {/* <label htmlFor="bus">bus</label>
+              <input min={0} id="bus" name="bus" type="number" /> */}
+              <TextField
+                label="Bus"
+                type="number"
+                name="bus"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item">
-              <label htmlFor="school">School</label>
-              <input min={0} id="school" name="school" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="bus">bus</label>
-              <input min={0} id="bus" name="bus" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="restaurant">Restaurant</label>
-              <input min={0} id="restaurant" name="restaurant" type="number" />
+              {/* <label htmlFor="restaurant">Restaurant</label>
+              <input min={0} id="restaurant" name="restaurant" type="number" /> */}
+                <TextField
+                label="Restaurant"
+                type="number"
+                name="restaurant"
+                size="small"
+                style={{ width: "100%" }}
+              />
             </div>
             <div className="item"> <button className="sendButton">Add</button></div>
 

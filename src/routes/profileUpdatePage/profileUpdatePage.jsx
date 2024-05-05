@@ -3,6 +3,7 @@ import "./profileUpdatePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import UploadWidget from "../../components/uploadWidget/uploadWidget";
+import { TextField } from "@mui/material";
 
 function ProfileUpdatePage() {
 
@@ -35,26 +36,33 @@ function ProfileUpdatePage() {
         <form onSubmit={handleSubmit}>
           <h1>Update Profile</h1>
           <div className="item">
-            <label htmlFor="username" >Username</label>
-            <input
-              id="username"
-              name="username"
+            <TextField
+              label="Username"
               type="text"
+              name="username"
+              InputLabelProps={{ required: false }}
               defaultValue={currentUser.username}
+              required
             />
+
           </div>
           <div className="item">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
+            <TextField
+              label="Email"
+              type="text"
               name="email"
-              type="email"
+              InputLabelProps={{ required: false }}
               defaultValue={currentUser.email}
+              required
             />
           </div>
           <div className="item">
-            <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <TextField
+              label="Password"
+              type="password"
+              name="password"
+              InputLabelProps={{ required: false }}
+            />
           </div>
           <button>Update</button>
           {error && <span>error</span>}

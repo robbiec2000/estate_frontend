@@ -1,6 +1,11 @@
 import { useState } from "react";
 import "./filter.scss";
 import { useSearchParams } from "react-router-dom";
+import { FormControl, TextField } from "@mui/material";
+import { inputStyle } from "../../lib/muiStyle";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 
 function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,7 +14,7 @@ function Filter() {
     city: searchParams.get("city") || "",
     property: searchParams.get("property") || "",
     minPrice: searchParams.get("minPrice") || 0,
-    maxPrice: searchParams.get("maxPrice") || 10000000,
+    maxPrice: searchParams.get("maxPrice") || 1000000,
     bedroom: searchParams.get("bedroom") || "",
   });
 
@@ -32,75 +37,103 @@ function Filter() {
           <>All properties</>
         }
       </h1>
+
       <div className="top">
+
         <div className="item">
-          <label htmlFor="city">Location</label>
-          <input
-            type="text"
-            id="city"
+          <TextField
+            label="Location"
+            type="city"
             name="city"
-            placeholder="City Location"
             onChange={handleChange}
+            placeholder="City Location"
             defaultValue={query.city}
+            size="small"
           />
         </div>
       </div>
       <div className="bottom">
         <div className="item">
-          <label htmlFor="type">Type</label>
-          <select name="type" id="type" onChange={handleChange} defaultValue={query.type}>
-            <option value="">any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
-          </select>
+          <FormControl fullWidth size="small">
+            <InputLabel id="select-label-type">Type</InputLabel>
+            <Select
+              labelId="select-label-type"
+              defaultValue={query.type}
+              label="Type"
+              name="type"
+              onChange={handleChange}
+
+              style={{ width: 130 }}
+            >
+              <MenuItem value={"any"}>Any</MenuItem>
+              <MenuItem value={"buy"}>Buy</MenuItem>
+              <MenuItem value={"rent"}>Rent</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div className="item" onChange={handleChange} defaultValue={query.property}>
-          <label htmlFor="property">Property</label>
-          <select name="property" id="property">
-            <option value="">any</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="condo">Condo</option>
-            <option value="land">Land</option>
-          </select>
+          <FormControl fullWidth size="small">
+            <InputLabel id="select-label-property">Property</InputLabel>
+            <Select
+              labelId="select-label-property"
+              defaultValue={query.type}
+              label="Property"
+              name="property"
+              onChange={handleChange}
+              size="small"
+              style={{ width: 130}}
+            >
+              <MenuItem value={"any"}>Any</MenuItem>
+              <MenuItem value={"apartment"}>Apartment</MenuItem>
+              <MenuItem value={"house"}>House</MenuItem>
+              <MenuItem value={"condo"}>Condo</MenuItem>
+              <MenuItem value={"land"}>Land</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div className="item">
-          <label htmlFor="minPrice">Min Price</label>
-          <input
+          <TextField
+            label="minPrice"
             type="number"
-            id="minPrice"
             name="minPrice"
             placeholder="any"
-            onChange={handleChange}
             defaultValue={query.minPrice}
+            onChange={handleChange}
+            size="small"
+            style={{ width: 130 }}
           />
         </div>
         <div className="item">
-          <label htmlFor="maxPrice">Max Price</label>
-          <input
-            type="text"
-            id="maxPrice"
+          <TextField
+            label="maxPrice"
+            type="number"
             name="maxPrice"
             placeholder="any"
-            onChange={handleChange}
             defaultValue={query.maxPrice}
+            onChange={handleChange}
+            style={{ width: 130 }}
+            size="small"
           />
         </div>
         <div className="item">
-          <label htmlFor="bedroom">Bedroom</label>
-          <input
-            type="text"
-            id="bedroom"
+          <TextField
+            label="Bedroom"
+            type="number"
             name="bedroom"
             placeholder="any"
-            onChange={handleChange}
             defaultValue={query.bedroom}
+            onChange={handleChange}
+            size="small"
+            style={{ width: 130 }}
           />
         </div>
+
         <button onClick={handleFilter}>
           <img src="/search.png" alt="" />
         </button>
       </div>
+
+
     </div>
   );
 }

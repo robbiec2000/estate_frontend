@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { useState } from "react";
 import apiRequest from "../../lib/apiRequest";
+import { inputStyle } from "../../lib/muiStyle";
+import { TextField } from "@mui/material";
 
 function Register() {
 
@@ -36,9 +38,27 @@ function Register() {
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
           <h1>Create an Account</h1>
-          <input required name="username" type="text" placeholder="Username" />
-          <input required name="email" type="text" placeholder="Email" />
-          <input required name="password" type="password" placeholder="Password" />
+          <TextField
+            label="Username"
+            type="text"
+            name="username"
+            InputLabelProps={{ required: false }}
+            required
+          />
+          <TextField
+            label="Email"
+            type="text"
+            name="email"
+            InputLabelProps={{ required: false }}
+            required
+          />
+          <TextField
+            label="Password"
+            type="password"
+            name="password"
+            InputLabelProps={{ required: false }}
+            required
+          />
           <button disabled={isLoading}>Register</button>
           {error && <span>{error}</span>}
           <Link to="/login">Do you have an account?</Link>

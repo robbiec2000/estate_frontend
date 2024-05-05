@@ -3,6 +3,9 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import apiRequest from "../../lib/apiRequest";
 import { AuthContext } from "../../context/AuthContext";
+import TextField from '@mui/material/TextField';
+import { inputStyle } from "../../lib/muiStyle";
+
 
 
 function Login() {
@@ -41,8 +44,25 @@ function Login() {
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
           <h1>Welcome back</h1>
-          <input name="username" type="text" placeholder="Username" required />
-          <input name="password" type="password" placeholder="Password" required />
+          <TextField
+            id="outlined-password-input"
+            label="Username"
+            type="text"
+            name="username"
+            InputLabelProps={{ required: false }}
+            required
+            
+          />
+          <TextField
+            id="outlined-password-input"
+            label="Password"
+            type="password"
+            name="password"
+            InputLabelProps={{ required: false }}
+            required
+          />
+          {/* <input name="username" type="text" placeholder="Username" required />
+          <input name="password" type="password" placeholder="Password" required /> */}
           <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
           <Link to="/register">{"Don't"} you have an account?</Link>
