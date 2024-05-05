@@ -5,6 +5,7 @@ import apiRequest from "../../lib/apiRequest";
 import "./profilePage.scss";
 import { Suspense, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { Button } from "@mui/material";
 
 function ProfilePage() {
 
@@ -30,6 +31,7 @@ function ProfilePage() {
             <h1>User Information</h1>
             <Link to="/profile/update">
               <button>Update Profile</button>
+              {/* <Button variant="contained">Contained</Button> */}
             </Link>
           </div>
           <div className="info">

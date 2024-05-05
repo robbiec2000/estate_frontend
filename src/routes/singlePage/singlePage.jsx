@@ -59,7 +59,7 @@ function SinglePage() {
                 <h1>{post.title}</h1>
                 <div className="address">
                   <img src="/pin.png" alt="" />
-                  <span>{post.address}</span>
+                  <span>{post.city}</span>
                 </div>
                 <div className="price">$ {post.price} {post.type==="rent" && "per week"}</div>
               </div>

@@ -21,7 +21,7 @@ function Filter() {
   const handleChange = (e) => {
     setQuery({
       ...query,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value === "any" ? "" : e.target.value,
     })
   }
 
@@ -81,7 +81,7 @@ function Filter() {
               name="property"
               onChange={handleChange}
               size="small"
-              style={{ width: 130}}
+              style={{ width: 130 }}
             >
               <MenuItem value={"any"}>Any</MenuItem>
               <MenuItem value={"apartment"}>Apartment</MenuItem>
