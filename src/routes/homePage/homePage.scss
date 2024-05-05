@@ -3,6 +3,7 @@
 .homePage {
   display: flex;
   height: 100%;
+  overflow: hidden;
 
 
   .textContainer {
@@ -29,10 +30,10 @@
       }
 
       .title {
-        font-size: 64px;
+        font-size: 50px;
 
         @include lg {
-          font-size: 48px;
+          font-size: 30px;
         }
       }
 
@@ -45,10 +46,10 @@
         }
 
         h1 {
-          font-size: 36px;
+          font-size: 30px;
 
           @include lg {
-            font-size: 32px;
+            font-size: 30px;
           }
         }
 
@@ -66,6 +67,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    border-radius: 50px;
 
     @include md {
       display: none;

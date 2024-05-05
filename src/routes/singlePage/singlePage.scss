@@ -6,13 +6,11 @@
 
   @include md {
     flex-direction: column;
-    overflow: scroll;
   }
 
   .details {
     flex: 3;
     height: 100%;
-    overflow-y: scroll;
 
     @include md {
       flex: none;
@@ -104,12 +102,13 @@
     flex: 2;
     background-color: #fcf5f3;
     height: 100%;
-    overflow-y: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 
     @include md {
       flex: none;
       height: max-content;
-      margin-bottom: 50px;
     }
 
     .wrapper {
@@ -189,6 +188,7 @@
       .mapContainer {
         width: 100%;
         height: 200px;
+        z-index: 0;
       }
 
       .buttons {
