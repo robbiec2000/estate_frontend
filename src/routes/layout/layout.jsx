@@ -6,12 +6,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 function Layout() {
   return (
-    <div className="layout">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="content">
-        <Outlet />
+    <div>
+      <Navbar />
+      <div className="layout">
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
@@ -20,19 +20,19 @@ function Layout() {
 function RequireAuth() {
 
   const { currentUser } = useContext(AuthContext);
-  if(!currentUser){
-    return <Navigate to="/login"/>;
+  if (!currentUser) {
+    return <Navigate to="/login" />;
   }
   return (
-    <div className="layout">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="content">
-        <Outlet />
+    <div>
+      <Navbar />
+      <div className="layout">
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
 }
 
-export {RequireAuth, Layout};
+export { RequireAuth, Layout };

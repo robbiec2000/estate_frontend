@@ -26,7 +26,8 @@
   }
 
   .content {
-    // flex: 1;
-    height: calc(100vh - 100px);
+    flex: 1;
+    padding-top: 80px;
   }
 }
+
